@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<body>
+<span id="timer"></span>
+</body>
+
+<script>
+function timerObj (totalSec){
+
+	this.totalSec = totalSec
+    this.minutes;
+    this.seconds;
+	this.displayStr;
+	this.countDown= function(){
+		if(this.totalSec > 0 ){ 
+		this.totalSec--;
+		this.consturctor();
+		}
+	};
+	this.consturctor = function(){
+	    this.minutes = parseInt(this.totalSec / 60, 10);
+		this.seconds = parseInt(this.totalSec % 60, 10);
+		this.displayStr = `${this.minutes< 10 ? "0" + this.minutes : this.minutes}:${this.seconds< 10 ? "0" + this.seconds : this.seconds}`;
+	}
+	this.consturctor();
+}
+
+
+function startTimer(timerObject, display) {
+    var myInterval = setInterval(function () {
+    	display.innerHTML = timerObject.displayStr;
+        timerObject.countDown();
+		if(timerObject.totalSec<=0){
+			clearInterval(myInterval);
+		}
+		console.log(timerObject);
+ 
+    }, 1000);
+
+	
+}
+
+window.onload = function () {
+    var fiveMinutes = 10
+    timerObj = new timerObj(fiveMinutes);
+    display = document.getElementById('timer')
+    startTimer(timerObj, display);
+};
+
+</script>
+
+</body>
+</html>
