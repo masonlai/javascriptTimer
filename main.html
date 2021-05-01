@@ -12,12 +12,12 @@ function timerObj (totalSec){
 	this.totalSec = totalSec;
 	this.countDown= function(){
 		if(this.totalSec > 0 ){ 
-		this.totalSec--;
-		this.consturctor();
+			this.totalSec--;
+			this.consturctor();
 		}
 	};
 	this.consturctor = function(){
-	    this.minutes = parseInt(this.totalSec / 60, 10);
+	    	this.minutes = parseInt(this.totalSec / 60, 10);
 		this.seconds = parseInt(this.totalSec % 60, 10);
 		this.displayStr = `${this.minutes< 10 ? "0" + this.minutes : this.minutes}:${this.seconds< 10 ? "0" + this.seconds : this.seconds}`;
 	}
